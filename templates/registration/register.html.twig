@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New User{% endblock %}
+
+{% block main_class %}New-user{% endblock %}
+
+{% block main %}
+    <div>
+        <div class="mainTopPadding bgc">
+            <img class="registerImg" src="{{ asset('build/img/teamwork-2.bbfe5849.png') }}" alt="image teamwork">
+        </div>
+        <div class="bgc mainTopPadding d-flex flex-column justify-content-cente align-items-center">
+
+            <div class="col-6 formRegister mb-5">
+                {{ form_start(registrationForm) }}
+                <h1 class="text-center">S'enregistrer</h1>
+                {{ form_row(registrationForm.email) }}
+{#                {{ error }}#}
+                {{ form_row(registrationForm.plainPassword) }}
+                <div class="d-flex justify-content-center pt-5">
+                    <button type="submit" class="button-1 me-3 my-2">Valider l'inscription</button>
+                </div>
+                <p class="text-center pt-5">
+                    En cliquant sur créer, vous acceptez les
+                    <a href="#">conditions générales</a>
+                    et la
+                    <a href="#">politique de confidentialité</a> de KOOM
+                </p>
+                {{ form_end(registrationForm) }}
+            </div>
+
+            {#            <div class="d-flex align-items-center justify-content-center mainTopPadding">#}
+            {#                <a href="#" class="RegisterBtn d-flex align-items-center justify-content-center mt-4">Se connecter</a>#}
+            {#            </div>#}
+
+        </div>
+    </div>
+{% endblock %}

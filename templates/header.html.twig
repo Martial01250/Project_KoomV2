@@ -1,0 +1,31 @@
+<nav>
+
+    <a href="{{ path('app_home') }}" class="nav-icon" aria-label="visit homepage" aria-current="page">
+        <img class="" src="{{ asset('build/img/Logo_Koom_black.png') }}" alt="logo koom">
+    </a>
+
+    <div class="main-navlinks">
+        <button class="hamburger" type="button" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="navlinks-container">
+            <a href="#" aria-current="page">Accueil</a>
+            <a href="#">Projets</a>
+            <a href="#">Se connecter</a>
+            <a href="#">S'inscrire</a>
+        </div>
+    </div>
+
+    <div class="nav-authentication">
+        <a href="#" class="sign-user" aria-label="sign in page">
+            <img src="{{ asset('build/img/LogoUser.png') }}" alt="user-icon">
+        </a>
+{#        <div class="sign-btns">#}
+{#            <button type="button">Se connecté</button>#}
+{#            <button type="button">S'inscrire</button>#}
+{#        </div>#}
+    </div>
+
+</nav>

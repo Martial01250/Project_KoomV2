@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block main %}
+    <div class="bgc">
+        <div class="container-fluid d-flex mainTopPadding">
+            <div class="row">
+
+                <div class="col-12 col-md-12 col-xl-6 ">
+
+                    <div class="text-center">
+                        <h1>Bienvenue sur Koom !</h1>
+                        <p class="text-center mt-5">Première plateforme d’appel à projets collaboratifs en france. </p>
+                    </div>
+
+                    <div class="row">
+                        <div class="d-flex justify-content-evenly mt-4">
+                            <a href="{{ path('app_register') }}"
+                               class="RegisterBtn d-flex align-items-center justify-content-center ">S'inscrire</a>
+                            <a class="aboutBtn">En savoir plus</a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-12 col-md-12 col-xl-6 g-3">
+
+                    <img class="col-12 mx-0 boxShadow " src="{{ asset('build/img/homePage.jpg') }}"
+                         alt="image d'accueil">
+                </div>
+            </div>
+        </div>
+    </div>
+    <img class="curvy" src="{{ asset('build/img/Vector.svg') }}" alt="wave">
+
+{#    {% include ('project/ProjectCard.html.twig') %}#}
+
+    <img class="curvy" src="{{ asset('build/img/VectorBottom2.svg') }}" alt="wave">
+{% endblock %}
