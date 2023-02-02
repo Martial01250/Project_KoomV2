@@ -1,3 +1,5 @@
+
+
 <nav>
 
     <a href="{{ path('app_home') }}" class="nav-icon" aria-label="visit homepage" aria-current="page">
@@ -11,21 +13,24 @@
             <span></span>
         </button>
         <div class="navlinks-container">
-            <a href="#" aria-current="page">Accueil</a>
+            <a href="{{ path('app_home') }}" aria-current="page">Accueil</a>
+
             <a href="#">Projets</a>
-            <a href="#">Se connecter</a>
-            <a href="#">S'inscrire</a>
+            {% if not app.user %}
+            <a href="{{ path('app_login')}}">Se connecter</a>
+            <a href="{{ path('app_register') }}">S'inscrire</a>
+            {% endif %}
+
+            {% if app.user %}
+                <a href="{{ path('app_logout')}}">Se déconnecter</a>
+            {% endif %}
         </div>
     </div>
 
     <div class="nav-authentication">
-        <a href="#" class="sign-user" aria-label="sign in page">
+        <a href="{{ path('app_login') }}" class="sign-user" aria-label="sign in page">
             <img src="{{ asset('build/img/LogoUser.png') }}" alt="user-icon">
         </a>
-{#        <div class="sign-btns">#}
-{#            <button type="button">Se connecté</button>#}
-{#            <button type="button">S'inscrire</button>#}
-{#        </div>#}
     </div>
 
 </nav>

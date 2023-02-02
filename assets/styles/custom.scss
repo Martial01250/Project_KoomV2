@@ -10,6 +10,7 @@
 nav {
   width: 100%;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   padding: 15px 25px;
   background: #9D7E66;
@@ -56,23 +57,9 @@ nav {
 
 .nav-authentication {
   margin-left: auto;
-
+  display: none;
 }
 
-//.sign-btns button {
-//  font-size: 16px;
-//  min-width: 90px;
-//  padding: 10px 5px;
-//  margin: 0 5px ;
-//  border-radius: 5px;
-//  cursor: pointer;
-//  border: none;
-//}
-//
-//.sign-btns button:nth-child(2){
-//  border: none;
-//  background: #92c3eeb7;
-//}
 
 .sign-user{
   display: none;
@@ -163,6 +150,7 @@ nav {
   .nav-authentication{
     order:3;
     margin-left: 0;
+    display: block;
   }
 
   .sign-btns {
