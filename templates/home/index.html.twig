@@ -33,8 +33,10 @@
         </div>
     </div>
     <img class="curvy" src="{{ asset('build/img/Vector.svg') }}" alt="wave">
+    <div class="d-flex justify-content-around">
+        {% include ('ProjectCard.html.twig') %}
+    </div>
 
-{#    {% include ('project/ProjectCard.html.twig') %}#}
 
     <img class="curvy" src="{{ asset('build/img/VectorBottom2.svg') }}" alt="wave">
 {% endblock %}

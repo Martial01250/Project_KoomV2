@@ -14,6 +14,8 @@ import './bootstrap';
 
 // require('@fortawesome/fontawesome-free/css/all.min.css')
 // require('@fortawesome/fontawesome-free/js/all.js')
+import '@fortawesome/fontawesome-free/js/all.js';
+
 
 const hamburgerToggler = document.querySelector(".hamburger");
 const navLinksContainer = document.querySelector(".navlinks-container");
