@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -31,6 +32,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'boolean')]
     private bool $is_Verified = false;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $firstname = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $lastname = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $job = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $link_github = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $link_linkedin = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $description = null;
+
+    #[ORM\Column(type: Types::ARRAY, nullable: true)]
+    private array $skill = [];
+
+    #[ORM\Column(type: Types::ARRAY, nullable: true)]
+    private array $technology = [];
 
 
     public function getId(): ?int
@@ -111,6 +136,102 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIsVerified(bool $is_Verified): self
     {
         $this->is_Verified = $is_Verified;
+
+        return $this;
+    }
+
+    public function getFirstname(): ?string
+    {
+        return $this->firstname;
+    }
+
+    public function setFirstname(?string $firstname): self
+    {
+        $this->firstname = $firstname;
+
+        return $this;
+    }
+
+    public function getLastname(): ?string
+    {
+        return $this->lastname;
+    }
+
+    public function setLastname(?string $lastname): self
+    {
+        $this->lastname = $lastname;
+
+        return $this;
+    }
+
+    public function getJob(): ?string
+    {
+        return $this->job;
+    }
+
+    public function setJob(?string $job): self
+    {
+        $this->job = $job;
+
+        return $this;
+    }
+
+    public function getLinkGithub(): ?string
+    {
+        return $this->link_github;
+    }
+
+    public function setLinkGithub(?string $link_github): self
+    {
+        $this->link_github = $link_github;
+
+        return $this;
+    }
+
+    public function getLinkLinkedin(): ?string
+    {
+        return $this->link_linkedin;
+    }
+
+    public function setLinkLinkedin(?string $link_linkedin): self
+    {
+        $this->link_linkedin = $link_linkedin;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getSkill(): array
+    {
+        return $this->skill;
+    }
+
+    public function setSkill(?array $skill): self
+    {
+        $this->skill = $skill;
+
+        return $this;
+    }
+
+    public function getTechnology(): array
+    {
+        return $this->technology;
+    }
+
+    public function setTechnology(?array $technology): self
+    {
+        $this->technology = $technology;
 
         return $this;
     }
