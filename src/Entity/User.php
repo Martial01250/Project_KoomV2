@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -51,11 +53,23 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
-    #[ORM\Column(type: Types::ARRAY, nullable: true)]
+    #[ORM\Column]
     private array $skill = [];
 
-    #[ORM\Column(type: Types::ARRAY, nullable: true)]
+    #[ORM\Column]
     private array $technology = [];
+
+    #[ORM\ManyToMany(targetEntity: Project::class, inversedBy: 'users')]
+    private Collection $participe;
+
+    #[ORM\OneToMany(mappedBy: 'id_user', targetEntity: Comments::class)]
+    private Collection $comments;
+
+    public function __construct()
+    {
+        $this->participe = new ArrayCollection();
+        $this->comments = new ArrayCollection();
+    }
 
 
     public function getId(): ?int
@@ -212,26 +226,92 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getSkill(): array
-    {
-        return $this->skill;
-    }
 
-    public function setSkill(?array $skill): self
+
+    public function setSkill(array $skill): self
     {
+
         $this->skill = $skill;
 
         return $this;
     }
 
+    public function getSkill(): array
+
+    {
+        $skill = $this->skill;
+
+        $skill[] = '';
+
+        return array_unique($skill);
+    }
+
     public function getTechnology(): array
     {
-        return $this->technology;
+        $technology = $this->technology;
+
+        $technology[] = '';
+
+        return array_unique($technology);
     }
 
     public function setTechnology(?array $technology): self
     {
         $this->technology = $technology;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Project>
+     */
+    public function getParticipe(): Collection
+    {
+        return $this->participe;
+    }
+
+    public function addParticipe(Project $participe): self
+    {
+        if (!$this->participe->contains($participe)) {
+            $this->participe->add($participe);
+        }
+
+        return $this;
+    }
+
+    public function removeParticipe(Project $participe): self
+    {
+        $this->participe->removeElement($participe);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Comments>
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+
+    public function addComment(Comments $comment): self
+    {
+        if (!$this->comments->contains($comment)) {
+            $this->comments->add($comment);
+            $comment->setIdUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComment(Comments $comment): self
+    {
+        if ($this->comments->removeElement($comment)) {
+            // set the owning side to null (unless already changed)
+            if ($comment->getIdUser() === $this) {
+                $comment->setIdUser(null);
+            }
+        }
 
         return $this;
     }
