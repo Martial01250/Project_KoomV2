@@ -11,13 +11,26 @@
 
                     <div class="text-center">
                         <h1>Bienvenue sur Koom !</h1>
+
+                        {% if app.user %}
+                        <h3>{{ app.user.firstName }} {{ app.user.lastname }}</h3>
+                        {% endif %}
+
                         <p class="text-center mt-5">Première plateforme d’appel à projets collaboratifs en france. </p>
                     </div>
 
                     <div class="row">
                         <div class="d-flex justify-content-evenly mt-4">
-                            <a href="{{ path('app_register') }}"
-                               class="RegisterBtn d-flex align-items-center justify-content-center ">S'inscrire</a>
+
+                            {% if not app.user %}
+                                <a href="{{ path('app_register') }}"
+                                   class="RegisterBtn d-flex align-items-center justify-content-center">S'inscrire</a>
+                            {% endif %}
+
+                            {% if app.user %}
+                                <a href="{{ path('app_project_new') }}"
+                                   class="RegisterBtn d-flex align-items-center justify-content-center">Demarrer un projet</a>
+                            {% endif %}
                             <a class="aboutBtn">En savoir plus</a>
                         </div>
                     </div>
