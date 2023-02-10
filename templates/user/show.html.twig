@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User{% endblock %}
+{% block title %}Profil{% endblock %}
 
 {% block main %}
 
@@ -10,20 +10,18 @@
     </div>
 
     <div class="container-fluid bgc">
-
         <div class="col-6">
 
             <div class="col-6 pt-3">
                 {% include ('user/card_profile_user.html.twig') %}
             </div>
 
-            <div class="col-6">
+            <div class="col-6 d-flex align-items-center justify-content-center mt-3">
                 <a href="#"
-                   class="RegisterBtn d-flex align-items-center justify-content-center">Modifier votre profil</a>
+                   class="RegisterBtn">Modifier votre profil</a>
             </div>
 
         </div>
-
 
         <div class="col-6">
             <div></div>
