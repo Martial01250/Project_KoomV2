@@ -3,7 +3,11 @@
 {% block title %}Modifier profil{% endblock %}
 
 {% block main %}
+
+    <div class="mainTopPadding bgc">
+        <img class="registerImg" src="{{ asset('build/img/profile_img.png') }}"
+             alt="image about us">
+    </div>
+
     {{ include('user/_form.html.twig', {'button_label': 'Update'}) }}
-{#    <a href="{{ path('app_user_index') }}">back to list</a>#}
-{#    {{ include('user/_delete_form.html.twig') }}#}
 {% endblock %}

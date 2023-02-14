@@ -9,24 +9,29 @@
         </div>
     </div>
 
-    <div class="card-footer">
-        <ul>
+    <div class="card-footer col-12">
             <table class="table">
-                <thead>
-                <tr>
-                    <th scope="col">Compétences</th>
-                    <th scope="col"></th>
-                    <th scope="col">Technologie</th>
-                </tr>
-                </thead>
                 <tbody>
                 <tr>
-                    <td>
+                    <th scope="col">Compétences</th>
+                    <th scope="col">Technologie</th>
+                </tr>
+                <tr>
 
+                    <td>
+                        {% for skill in user.skill %}
+                            <li>{{ skill }}</li>
+                        {% endfor %}
                     </td>
+
+                    <td>
+                        {% for technology in user.technology %}
+                            <li>{{ technology }}</li>
+                        {% endfor %}
+                    </td>
+
                 </tr>
                 </tbody>
             </table>
-        </ul>
     </div>
 </div>
