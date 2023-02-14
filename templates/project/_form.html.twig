@@ -1,4 +1,24 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+<div class="bgc mainTopPadding d-flex flex-column justify-content-cente align-items-center">
+    <div class="container-fluid d-flex justify-content-center">
+
+        <div class="col-12 col-xl-6 formRegister mb-5">
+
+            {{ form_start(form) }}
+            <h1 class="text-center">Créez votre projet</h1>
+
+            {{ form_row(form.name) }}
+            {{ form_row(form.start_date) }}
+            {{ form_row(form.end_date) }}
+            {{ form_row(form.nb_employees) }}
+            {{ form_row(form.short_description) }}
+            {{ form_row(form.details) }}
+
+
+            <div class="d-flex justify-content-center pt-5">
+                <button type="submit" class="button-1 me-3 my-2">Valider les modifications</button>
+            </div>
+
+            {{ form_end(form) }}
+        </div>
+
+    </div>
