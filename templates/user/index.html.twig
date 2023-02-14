@@ -3,55 +3,55 @@
 {% block title %}Accueil{% endblock %}
 
 {% block main %}
-    <h1>User index</h1>
+{#    <h1>User index</h1>#}
 
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Email</th>
-            <th>Roles</th>
-            <th>Password</th>
-            <th>Is_Verified</th>
-            <th>Firstname</th>
-            <th>Lastname</th>
-            <th>Job</th>
-            <th>Link_github</th>
-            <th>Link_linkedin</th>
-            <th>Description</th>
-            <th>Skill</th>
-            <th>Technology</th>
-            <th>actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for user in users %}
-            <tr>
-                <td>{{ user.id }}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-                <td>{{ user.password }}</td>
-                <td>{{ user.isVerified ? 'Yes' : 'No' }}</td>
-                <td>{{ user.firstname }}</td>
-                <td>{{ user.lastname }}</td>
-                <td>{{ user.job }}</td>
-                <td>{{ user.linkGithub }}</td>
-                <td>{{ user.linkLinkedin }}</td>
-                <td>{{ user.description }}</td>
-                <td>{{ user.skill ? user.skill|join(', ') : '' }}</td>
-                <td>{{ user.technology ? user.technology|join(', ') : '' }}</td>
-                <td>
-                    <a href="{{ path('app_user_show', {'id': user.id}) }}">show</a>
-                    <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="14">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+{#    <table class="table">#}
+{#        <thead>#}
+{#        <tr>#}
+{#            <th>Id</th>#}
+{#            <th>Email</th>#}
+{#            <th>Roles</th>#}
+{#            <th>Password</th>#}
+{#            <th>Is_Verified</th>#}
+{#            <th>Firstname</th>#}
+{#            <th>Lastname</th>#}
+{#            <th>Job</th>#}
+{#            <th>Link_github</th>#}
+{#            <th>Link_linkedin</th>#}
+{#            <th>Description</th>#}
+{#            <th>Skill</th>#}
+{#            <th>Technology</th>#}
+{#            <th>actions</th>#}
+{#        </tr>#}
+{#        </thead>#}
+{#        <tbody>#}
+{#        {% for user in users %}#}
+{#            <tr>#}
+{#                <td>{{ user.id }}</td>#}
+{#                <td>{{ user.email }}</td>#}
+{#                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>#}
+{#                <td>{{ user.password }}</td>#}
+{#                <td>{{ user.isVerified ? 'Yes' : 'No' }}</td>#}
+{#                <td>{{ user.firstname }}</td>#}
+{#                <td>{{ user.lastname }}</td>#}
+{#                <td>{{ user.job }}</td>#}
+{#                <td>{{ user.linkGithub }}</td>#}
+{#                <td>{{ user.linkLinkedin }}</td>#}
+{#                <td>{{ user.description }}</td>#}
+{#                <td>{{ user.skill ? user.skill|join(', ') : '' }}</td>#}
+{#                <td>{{ user.technology ? user.technology|join(', ') : '' }}</td>#}
+{#                <td>#}
+{#                    <a href="{{ path('app_user_show', {'id': user.id}) }}">show</a>#}
+{#                    <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>#}
+{#                </td>#}
+{#            </tr>#}
+{#        {% else %}#}
+{#            <tr>#}
+{#                <td colspan="14">no records found</td>#}
+{#            </tr>#}
+{#        {% endfor %}#}
+{#        </tbody>#}
+{#    </table>#}
 
-    <a href="{{ path('app_user_new') }}">Create new</a>
+{#    <a href="{{ path('app_user_new') }}">Create new</a>#}
 {% endblock %}

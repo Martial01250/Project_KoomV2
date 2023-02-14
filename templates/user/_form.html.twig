@@ -1,4 +1,28 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+<div class="bgc mainTopPadding d-flex flex-column justify-content-cente align-items-center">
+    <div class="container-fluid d-flex justify-content-center">
+
+    <div class="col-12 col-xl-6 formRegister mb-5">
+        {{ form_start(form) }}
+        <h1 class="text-center">Modifier votre profil</h1>
+        {{ form_row(form.firstname) }}
+        {{ form_row(form.lastname) }}
+        {{ form_row(form.job) }}
+        {{ form_row(form.link_github) }}
+        {{ form_row(form.link_linkedin) }}
+        {{ form_row(form.skill) }}
+        {{ form_row(form.technology) }}
+        {{ form_row(form.description) }}
+
+
+        <div class="d-flex justify-content-center pt-5">
+            <button type="submit" class="button-1 me-3 my-2">Valider les modifications</button>
+        </div>
+
+        {{ form_end(form) }}
+    </div>
+
+</div>
+
+
+
+
