@@ -3,7 +3,11 @@
 {% block title %}New Project{% endblock %}
 
 {% block main %}
-    <h1>Create new Project</h1>
+
+    <div class="mainTopPadding bgc">
+        <img class="registerImg" src="{{ asset('build/img/Top-project-management.png') }}"
+             alt="image about us">
+    </div>
 
     {{ include('project/_form.html.twig') }}
 

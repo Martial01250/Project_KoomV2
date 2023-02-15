@@ -13,7 +13,7 @@
                         <h1>Bienvenue sur Koom !</h1>
 
                         {% if app.user %}
-                        <h3>{{ app.user.firstName }} {{ app.user.lastname }}</h3>
+                            <h3>{{ app.user.firstName }} {{ app.user.lastname }}</h3>
                         {% endif %}
 
                         <p class="text-center mt-5">Première plateforme d’appel à projets collaboratifs en france. </p>
@@ -29,7 +29,8 @@
 
                             {% if app.user %}
                                 <a href="{{ path('app_project_new') }}"
-                                   class="RegisterBtn d-flex align-items-center justify-content-center">Demarrer un projet</a>
+                                   class="RegisterBtn d-flex align-items-center justify-content-center">Demarrer un
+                                    projet</a>
                             {% endif %}
                             <a class="aboutBtn">En savoir plus</a>
                         </div>
@@ -47,9 +48,14 @@
     </div>
     <img class="curvy" src="{{ asset('build/img/Vector.svg') }}" alt="wave">
     <div class="d-flex justify-content-around">
-        {% include ('project/ProjectCard.html.twig') %}
+        <div class="container-fluid">
+            <div class="row g-3 mainTopPadding viewCard">
+                {% for project in projects | slice (0, 4) %}
+                    {% include ('project/ProjectCard_home.html.twig') %}
+                {% endfor %}
+            </div>
+        </div>
     </div>
-
 
     <img class="curvy" src="{{ asset('build/img/VectorBottom2.svg') }}" alt="wave">
 {% endblock %}

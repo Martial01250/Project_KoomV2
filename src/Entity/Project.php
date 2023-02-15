@@ -3,10 +3,12 @@
 namespace App\Entity;
 
 use App\Repository\ProjectRepository;
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+
 
 #[ORM\Entity(repositoryClass: ProjectRepository::class)]
 class Project
@@ -43,8 +45,15 @@ class Project
     #[ORM\OneToMany(mappedBy: 'id_project', targetEntity: Comments::class)]
     private Collection $comments;
 
+    #[ORM\Column(type: Types::ARRAY, nullable: true)]
+    private array $project_skill = [];
+
+    #[ORM\Column(type: Types::ARRAY, nullable: true)]
+    private array $project_technology = [];
+
     public function __construct()
     {
+        $this->created_date = new DateTime();
         $this->users = new ArrayCollection();
         $this->comments = new ArrayCollection();
     }
@@ -191,6 +200,38 @@ class Project
                 $comment->setIdProject(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getProjectSkill(): array
+    {
+        $ProjectSkill = $this->project_skill;
+
+        $ProjectSkill[] = '';
+
+        return array_unique($ProjectSkill);
+    }
+
+    public function setProjectSkill(?array $project_skill): self
+    {
+        $this->project_skill = $project_skill;
+
+        return $this;
+    }
+
+    public function getProjectTechnology(): array
+    {
+        $project_technology = $this->project_technology;
+
+        $project_technology[] = '';
+
+        return array_unique($project_technology);
+    }
+
+    public function setProjectTechnology(?array $project_technology): self
+    {
+        $this->project_technology = $project_technology;
 
         return $this;
     }
