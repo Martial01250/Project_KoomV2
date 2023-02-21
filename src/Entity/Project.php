@@ -39,9 +39,6 @@ class Project
     #[ORM\Column(type: Types::TEXT)]
     private ?string $details = null;
 
-    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'participe')]
-    private Collection $users;
-
     #[ORM\OneToMany(mappedBy: 'id_project', targetEntity: Comments::class)]
     private Collection $comments;
 
@@ -51,11 +48,14 @@ class Project
     #[ORM\Column(type: Types::ARRAY, nullable: true)]
     private array $project_technology = [];
 
+    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'projects')]
+    private Collection $users;
+
     public function __construct()
     {
         $this->created_date = new DateTime();
-        $this->users = new ArrayCollection();
         $this->comments = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -148,33 +148,6 @@ class Project
     }
 
     /**
-     * @return Collection<int, User>
-     */
-    public function getUsers(): Collection
-    {
-        return $this->users;
-    }
-
-    public function addUser(User $user): self
-    {
-        if (!$this->users->contains($user)) {
-            $this->users->add($user);
-            $user->addParticipe($this);
-        }
-
-        return $this;
-    }
-
-    public function removeUser(User $user): self
-    {
-        if ($this->users->removeElement($user)) {
-            $user->removeParticipe($this);
-        }
-
-        return $this;
-    }
-
-    /**
      * @return Collection<int, Comments>
      */
     public function getComments(): Collection
@@ -232,6 +205,33 @@ class Project
     public function setProjectTechnology(?array $project_technology): self
     {
         $this->project_technology = $project_technology;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, User>
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users->add($user);
+            $user->addProject($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        if ($this->users->removeElement($user)) {
+            $user->removeProject($this);
+        }
 
         return $this;
     }

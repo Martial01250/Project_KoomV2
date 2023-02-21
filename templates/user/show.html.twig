@@ -4,30 +4,29 @@
 
 {% block main %}
 
-    <div class="mainTopPadding bgc">
-        <img class="registerImg" src="{{ asset('build/img/profile_img.png') }}"
-             alt="image about us">
-    </div>
+<div class="mainTopPadding bgc">
+    <img class="registerImg" src="{{ asset('build/img/profile_img.png') }}"
+         alt="image about us">
+</div>
 
-    <div class="container-fluid bgc">
-        <div class="row">
+<div class="bgc">
+    <div class="container-fluid">
+        <div class="row justify-content-around">
 
             {#   Include card profile   #}
-            <div class="col-6 pt-3">
-                <div class="col-6">
-                    {% include ('user/card_profile_user.html.twig') %}
-                </div>
-                <div class="col-6 d-flex align-items-center justify-content-center mt-3">
+            <div class="col-lg-5 pt-3">
+                {% include ('user/card_profile_user.html.twig') %}
+                <div class="d-flex align-items-center justify-content-center mt-3">
                     <a href="{{ path('app_user_edit', {'id': user.id}) }}" class="aboutBtn">Modifier votre profil</a>
                 </div>
             </div>
 
 
-            <div class="col-6 pt-3">
+            <div class="col-lg-5 pt-3">
 
                 <div class="bgc d-flex flex-column justify-content-cente align-items-center">
                     <div class="container-fluid d-flex justify-content-center">
-                        <div class="col-12 col-xl-6 formRegister mb-5">
+                        <div class="col-12 formRegister mb-5">
                             <h6>Description</h6>
                             <p>{{ user.description }}</p>
                         </div>
@@ -36,78 +35,30 @@
 
                 <div class="bgc d-flex flex-column justify-content-cente align-items-center">
                     <div class="container-fluid d-flex justify-content-center">
-                        <div class="col-12 col-xl-6 formRegister mb-5">
-                            <h6>Demandes de participation :</h6>
-                            <p></p>
+                        <div class="col-12 formRegister mb-5">
+                            <h6>Demandes de participation : <span> ...</span></h6>
+
                         </div>
                     </div>
                 </div>
 
             </div>
         </div>
-        <div class="bgc">
-            {% include ('project/card_project.html.twig') %}
+
+        <div class="container">
+
+
+            <h2 class="text-center mainTopPadding">Projets en cours</h2>
+            {% for project in projects %}
+                {{ dump(projects) }}
+                    {% include ('project/card_project_Profile.html.twig') %}
+
+            {% endfor %}
+
+            <div class="mainTopPadding"></div>
         </div>
 
     </div>
 
-    {#    <table class="table"> #}
-    {#        <tbody> #}
-    {#            <tr> #}
-    {#                <th>Id</th> #}
-    {#                <td>{{ user.id }}</td> #}
-    {#            </tr> #}
-    {#            <tr> #}
-    {#                <th>Email</th> #}
-    {#                <td>{{ user.email }}</td> #}
-    {#            </tr> #}
-    {#            <tr> #}
-    {#                <th>Roles</th> #}
-    {#                <td>{{ user.roles ? user.roles|json_encode : '' }}</td> #}
-    {#            </tr> #}
-    {#            <tr> #}
-    {#                <th>Password</th> #}
-    {#                <td>{{ user.password }}</td> #}
-    {#            </tr> #}
-    {#            <tr> #}
-    {#                <th>Is_Verified</th> #}
-    {#                <td>{{ user.isVerified ? 'Yes' : 'No' }}</td> #}
-    {#            </tr> #}
-    {#            <tr> #}
-    {#                <th>Firstname</th> #}
-    {#                <td>{{ user.firstname }}</td> #}
-    {#            </tr> #}
-    {#            <tr> #}
-    {#                <th>Lastname</th> #}
-    {#                <td>{{ user.lastname }}</td> #}
-    {#            </tr> #}
-    {#            <tr> #}
-    {#                <th>Job</th> #}
-    {#                <td>{{ user.job }}</td> #}
-    {#            </tr> #}
-    {#            <tr> #}
-    {#                <th>Link_github</th> #}
-    {#                <td>{{ user.linkGithub }}</td> #}
-    {#            </tr> #}
-    {#            <tr> #}
-    {#                <th>Link_linkedin</th> #}
-    {#                <td>{{ user.linkLinkedin }}</td> #}
-    {#            </tr> #}
-    {#            <tr> #}
-    {#                <th>Description</th> #}
-    {#                <td>{{ user.description }}</td> #}
-    {#            </tr> #}
-    {#            <tr> #}
-    {#                <th>Skill</th> #}
-    {#                <td>{{ user.skill ? user.skill|join(', ') : '' }}</td> #}
-    {#            </tr> #}
-    {#            <tr> #}
-    {#                <th>Technology</th> #}
-    {#                <td>{{ user.technology ? user.technology|join(', ') : '' }}</td> #}
-    {#            </tr> #}
-    {#        </tbody> #}
-    {#    </table> #}
-    {#    <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a> #}
-
     {#    {{ include('user/_delete_form.html.twig') }} #}
-{% endblock %}
+    {% endblock %}
