@@ -44,20 +44,16 @@
 
             </div>
         </div>
-
         <div class="container">
 
 
             <h2 class="text-center mainTopPadding">Projets en cours</h2>
             {% for project in projects %}
-                {{ dump(projects) }}
                     {% include ('project/card_project_Profile.html.twig') %}
-
             {% endfor %}
 
             <div class="mainTopPadding"></div>
         </div>
-
     </div>
 
     {#    {{ include('user/_delete_form.html.twig') }} #}

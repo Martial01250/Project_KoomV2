@@ -1,4 +1,4 @@
-<div class="card-project-profile-color">
+<div class="card-project-profile">
     <div class="row">
         <div class="col-md-3">
             <img class="card-img" src="{{ asset('build/img/test-img-project.png') }}" alt="test profile">
@@ -6,10 +6,12 @@
         <div class="col">
             <div class="card-content">
                 <h4 class="p-2 text-center">{{ project.name }}</h4>
+                <hr>
                 <p>{{ project.shortDescription }}</p>
+                <hr>
                 <div class="d-flex justify-content-around">
-                    <p>Participants souhaité : {{ project.nbEmployees }}</p>
-                    <p>Likes</p>
+                    <p class="pt-3">Participants souhaité : {{ project.nbEmployees }}</p>
+                    <p class="pt-3">Likes</p>
                 </div>
             </div>
         </div>
