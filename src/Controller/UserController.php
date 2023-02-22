@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Project;
 use App\Entity\User;
 use App\Form\UserType;
+use App\Repository\ProjectRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping\Id;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -42,10 +44,13 @@ class UserController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_user_show', methods: ['GET'])]
-    public function show(User $user): Response
+    public function show(ProjectRepository $projectRepository): Response
     {
+        $user = $this->getUser();
+
         return $this->render('user/show.html.twig', [
             'user' => $user,
+            'projects' => $projectRepository->findByUser($user),
         ]);
     }
 

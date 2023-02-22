@@ -59,16 +59,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private array $technology = [];
 
-    #[ORM\ManyToMany(targetEntity: Project::class, inversedBy: 'users')]
-    private Collection $participe;
-
     #[ORM\OneToMany(mappedBy: 'id_user', targetEntity: Comments::class)]
     private Collection $comments;
 
+    #[ORM\ManyToMany(targetEntity: Project::class, inversedBy: 'users')]
+    private Collection $projects;
+
     public function __construct()
     {
-        $this->participe = new ArrayCollection();
         $this->comments = new ArrayCollection();
+        $this->projects = new ArrayCollection();
     }
 
 
@@ -262,29 +262,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @return Collection<int, Project>
-     */
-    public function getParticipe(): Collection
-    {
-        return $this->participe;
-    }
-
-    public function addParticipe(Project $participe): self
-    {
-        if (!$this->participe->contains($participe)) {
-            $this->participe->add($participe);
-        }
-
-        return $this;
-    }
-
-    public function removeParticipe(Project $participe): self
-    {
-        $this->participe->removeElement($participe);
-
-        return $this;
-    }
 
     /**
      * @return Collection<int, Comments>
@@ -312,6 +289,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $comment->setIdUser(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Project>
+     */
+    public function getProjects(): Collection
+    {
+        return $this->projects;
+    }
+
+    public function addProject(Project $project): self
+    {
+        if (!$this->projects->contains($project)) {
+            $this->projects->add($project);
+        }
+
+        return $this;
+    }
+
+    public function removeProject(Project $project): self
+    {
+        $this->projects->removeElement($project);
 
         return $this;
     }
